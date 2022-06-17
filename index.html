@@ -88,21 +88,23 @@ ul li {
       // Jangan ubah cara deklarasi fungsinya, cukup isi saja
       function fnClickHandler(toDoItem) {
         let li = document.createElement('li');
-        li.innerHTML = input.value;
+        li.appendChild(document.createTextNode(input.value));
         output.appendChild(li);
         input.value="";
+        input.focus();
       }
-      button.addEventListener("click", fnClickHandler);
-      input.addEventListener("keypress", (Enter)=> {
-        if(Enter.keyCode === 13) fnClickHandler();
-      });
+      
       
       
       // TODO: register event onclick / addEventListener untuk button
       // akan menjalankan fungsi fnClickHandler
+      button.addEventListener("click", fnClickHandler);
       
       // TODO: register event onkeypress / addEventListener untuk input
       // sehingga saat di input ditekan enter akan menjalankan fungsi fnClickHandler juga
+      input.addEventListener("keypress", (Enter)=> {
+        if(Enter.keyCode === 13) fnClickHandler();
+      });
     </script>
   </body>
 </html>
