@@ -7,10 +7,30 @@
     <title>Challenge - DOM</title>
   </head>
   <body>
-    <div id="app">
+    <div id="app" style="width: 400px; 
+    background-color: rgb(223, 223, 223); margin: auto; 
+    padding: 5px 30px 20px 30px; text-align: center; border-radius: 30px;">
       <!-- TODO: Buatlah sebuah header dengan id todo-title -->
       <!-- TODO: Buatlah sebuah subtitle dengan id todo-subtitle -->
-
+      <div>
+        <header id="todo-title">
+          <div>
+            <h1>To-Do List</h1>
+          </div>
+        </header>
+        <div id="subtitle">
+          <h5>~Today I Need to~</h5>
+        </div>
+        <div>
+          <input type="text" id="todo-input">
+          <button  id="todo-submit">submit</button>
+        </div>
+        <div>
+          <ul id="todo-output">
+          </ul>
+        </div>
+      </div>
+      
       <!-- Section: input -->
       <!-- TODO: Buatlah sebuah input bertipe text dengan id todo-input -->
       <!-- TODO: Buatlah sebuah button dengan id todo-submit -->
@@ -22,15 +42,27 @@
     <!-- ! Untuk tantangan ini, script jangan diubah ke external js yah ! -->
     <script>
       // TODO: Deklarasi variable sesuai dengan kebutuhan di sini
-      let button;
-      let input;
-      let output;
+      // let button;
+      // let input;
+      // let output;
+
+      const tambahlist = document.getElementById("todo-output");
+      const btnclick = document.getElementById("todo-submit");
 
       // TODO: Buatlah sebuah fungsi dengan nama fnClickHandler
       // Fungsi yang digunakan untuk menambahkan tulisan
       // Jangan ubah cara deklarasi fungsinya, cukup isi saja
-      function fnClickHandler(toDoItem) {}
+      function fnClickHandler(toDoItem) {
+        let output = document.getElementById('todo-output');
+        let li = document.createElement('li');
+        let input = document.getElementById('todo-input');
 
+          li.appendChild(document.createTextNode(input.value));
+        output.appendChild(li);
+        
+      }
+      btnclick.addEventListener("click", fnClickHandler);
+      
       // TODO: register event onclick / addEventListener untuk button
       // akan menjalankan fungsi fnClickHandler
       
