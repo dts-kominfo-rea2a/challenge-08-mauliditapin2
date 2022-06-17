@@ -8,51 +8,67 @@
   </head>
   <body>
     <style>
-      input[type=text], select {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-      }
-      
-      input[type=submit] {
-        width: 100%;
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-      
-      input[type=submit]:hover {
-        background-color: #45a049;
-      }
-      
+      body {font-family: Arial, Helvetica, sans-serif;}
+
+      input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+ul li {
+  background: #cce5ff;
+  color: rgb(0, 0, 0);
+  margin: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 10px 0px 10px 10px;
+} 
+.head {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+#app {
+  height: 400px auto; width: 400px; 
+    background-color: rgb(151, 231, 255); margin: auto; 
+    padding: 5px 30px 20px 30px;  border-radius: 30px;
+}
       
       </style>
-    <div id="app" style="height: 400px; width: 400px; 
-    background-color: rgb(223, 223, 223); margin: auto; 
-    padding: 5px 30px 20px 30px; text-align: center; border-radius: 30px;">
+    <div id="app" >
       <!-- challenge-08-maulidirahman-152235865100-4 -->
       <!-- TODO: Buatlah sebuah header dengan id todo-title -->
       <!-- TODO: Buatlah sebuah subtitle dengan id todo-subtitle -->
       <div>
         <header id="todo-title">
-          <div>
+          <div class="head">
             <h1>To-Do List</h1>
           </div>
         </header>
-        <div id="todo-subtitle">
+        <div  class="head" id="todo-subtitle">
           <h5>~Today I Need to~</h5>
         </div>
         <div style="display: flex;">
-            <input type="text" id="todo-input" style="">
-            <button  id="todo-submit">submit</button>
+            <input placeholder="todo-list" class="input" type="text" id="todo-input" style="">
+
+        </div>
+        <div>
+          <button class="button"  id="todo-submit">submit</button>
         </div>
         <div>
           <ul id="todo-output">
@@ -71,40 +87,26 @@
     <!-- ! Untuk tantangan ini, script jangan diubah ke external js yah ! -->
     <script>
       // TODO: Deklarasi variable sesuai dengan kebutuhan di sini
-      // let button;
-      // let input;
-      // let output;
+      let button  = document.getElementById("todo-submit");
+      let input  = document.getElementById('todo-input');
+      let output  = document.getElementById("todo-output");
 
-      const tambahlist = document.getElementById("todo-output");
-      const btnclick = document.getElementById("todo-submit");
 
       // TODO: Buatlah sebuah fungsi dengan nama fnClickHandler
       // Fungsi yang digunakan untuk menambahkan tulisan
       // Jangan ubah cara deklarasi fungsinya, cukup isi saja
       function fnClickHandler(toDoItem) {
-        let output = document.getElementById('todo-output');
         let li = document.createElement('li');
-        let input = document.getElementById('todo-input');
-        if (toDoItem.click) {
         li.appendChild(document.createTextNode(input.value));
         output.appendChild(li);
-        } else {
-          li.appendChild(document.createTextNode(input.value));
-        output.appendChild(li);
-        }
-        
+        input.value="";
       }
-      btnclick.addEventListener("click", fnClickHandler);
-      tambahlist.addEventListener("keypress" , fnClickHandler);
+      button.addEventListener("click", fnClickHandler);
+      input.addEventListener("keypress", (Enter)=> {
+        if(Enter.keyCode === 13) fnClickHandler();
+      });
       
-      let input = document.getElementById("todo-input");
-      input.addEventListener("keypress", function(event) {
-       
-        if (event.keyCode === 13) {
-          event.preventDefault();
-          btnclick.click();
-        }
-      }); 
+      
       // TODO: register event onclick / addEventListener untuk button
       // akan menjalankan fungsi fnClickHandler
       
