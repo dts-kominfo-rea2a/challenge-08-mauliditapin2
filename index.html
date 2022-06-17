@@ -85,13 +85,18 @@
         let output = document.getElementById('todo-output');
         let li = document.createElement('li');
         let input = document.getElementById('todo-input');
+        if (toDoItem.click) {
         li.appendChild(document.createTextNode(input.value));
         output.appendChild(li);
-        
+        } else {
+          li.appendChild(document.createTextNode(input.value));
+        output.appendChild(li);
+        }
         
       }
       btnclick.addEventListener("click", fnClickHandler);
-
+      tambahlist.addEventListener("keypress" , fnClickHandler);
+      
       let input = document.getElementById("todo-input");
       input.addEventListener("keypress", function(event) {
        
